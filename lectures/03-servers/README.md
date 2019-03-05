@@ -45,7 +45,7 @@ This lecture is all about servers. We start with an introduction to TCP and HTTP
 - always go for HTTPS
 - use correct HTTP statuses
   - see `require('http').STATUS_CODES`
-- plural names (e.g. `/dogs/1`)
+- plural names (e.g. `/articles/1`)
 - PUT vs PATCH (replace vs modify)
 
 ## Koa
@@ -116,8 +116,8 @@ router
   .get('/', ctx => {
     ctx.body = 'Hello World'
   })
-  .get('/dogs', ctx => {
-    ctx.body = dogs
+  .get('/articles', ctx => {
+    ctx.body = articles
   })
 
 app
@@ -175,6 +175,6 @@ process.on('exit', (code) => {
 - SIGTERM
 
 ## Homework
-Create your own Koa server which supports all CRUD (**C**reate, **R**ead, **U**pdate, **D**elete) operations on a collection of dogs.
+Create your own Koa server which supports all CRUD (**C**reate, **R**ead, **U**pdate, **D**elete) operations on a collection of articles.
 
 You can write everything from scratch (_recommended_), or you can use this repository as a boilerplate.

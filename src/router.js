@@ -1,7 +1,7 @@
 'use strict'
 
 const Router = require('koa-router')
-const dogs = require('./dogs')
+const articles = require('./articles')
 const { validate } = require('./utils/validator')
 
 const router = new Router()
@@ -10,22 +10,22 @@ router.get('/', ctx => {
   ctx.body = 'Hello World'
 })
 
-router.get('/dogs', ctx => {
-  ctx.body = dogs
+router.get('/articles', ctx => {
+  ctx.body = articles
 })
 
-router.get('/dogs/:id', ctx => {
-  const dog = dogs.find(item => item.id === Number(ctx.params.id))
+router.get('/articles/:id', ctx => {
+  const article = articles.find(item => item.id === Number(ctx.params.id))
 
-  if (!dog) {
+  if (!article) {
     ctx.status = 404
     return
   }
 
-  ctx.body = dog
+  ctx.body = article
 })
 
-router.post('/dogs', ctx => {
+router.post('/articles', ctx => {
   const schema = {
     type: 'Object',
     required: true,
@@ -34,20 +34,23 @@ router.post('/dogs', ctx => {
         type: 'integer',
         required: true,
       },
-      name: {
+      title: {
         type: 'string',
         required: true,
       },
-      breed: {
+      content: {
         type: 'string',
         required: true,
       },
-      birthYear: {
-        type: 'number',
-      },
-      photo: {
+      image: {
         type: 'string',
         format: 'url',
+      },
+      tags: {
+        type: 'array',
+        items: {
+          type: 'string',
+        },
       },
     },
   }
@@ -63,9 +66,9 @@ router.post('/dogs', ctx => {
     return
   }
 
-  dogs.push(ctx.request.body)
+  articles.push(ctx.request.body)
 
-  ctx.body = dogs
+  ctx.body = articles
 })
 
 module.exports = router.routes()
