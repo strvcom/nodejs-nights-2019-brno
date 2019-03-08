@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Arthur Dent",
+    "email": "dent@example.com",
+    "password": "Password123!",
+    "disabled": false
+  },
+  {
+    "id": 2,
+    "name": "Ford Prefect",
+    "email": "prefect@example.com",
+    "password": "$2b$10$PeDxa56jdeh93q.6YsO3hOBVsF3NWKG78Of7830XD0fufLYS7G8Va",
+    "disabled": false
+  }
+]

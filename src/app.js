@@ -4,9 +4,9 @@ const Koa = require('koa')
 const koaBody = require('koa-body')
 const koaCompress = require('koa-compress')
 const koaCors = require('kcors')
-const router = require('./router')
+const routes = require('./routes')
 const config = require('./config')
-const log = require('./logger')
+const log = require('./utils/logger')
 
 const services = {
   server: null,
@@ -18,7 +18,7 @@ app.use(koaCompress())
 app.use(koaCors())
 app.use(koaBody())
 
-app.use(router)
+app.use(routes)
 
 // Define start method
 app.start = async () => {
@@ -28,7 +28,7 @@ app.start = async () => {
   // e.g. database connection.
 
   services.server = await new Promise((resolve, reject) => {
-    const listen = app.listen(config.port, err => err ? reject(err) : resolve(listen))
+    const listen = app.listen(config.server.port, err => err ? reject(err) : resolve(listen))
   })
 }
 
