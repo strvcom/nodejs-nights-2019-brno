@@ -9,11 +9,11 @@ function findAll() {
 }
 
 function findById(id) {
-  const dog = R.find(R.propEq('id', id), articles)
-  if (!dog) {
+  const article = R.find(R.propEq('id', id), articles)
+  if (!article) {
     throw new errors.NotFoundError()
   }
-  return dog
+  return article
 }
 
 function create(article) {
