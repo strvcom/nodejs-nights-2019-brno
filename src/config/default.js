@@ -48,4 +48,5 @@ module.exports = env => ({
     stdout: true,
     minLevel: 'debug',
   },
+  naturalLanguageValidation: Boolean(process.env.GOOGLE_APPLICATION_CREDENTIALS),
 })
