@@ -2,7 +2,7 @@
 
 - [Topics covered](./topics.md)
 - [Presentation](https://docs.google.com/presentation/d/1C1bWK_-J_7KjjXM2SxbeIRa4Uzxn7QfIbS6u_y6EDos/edit?usp=sharing)
-- [Video] (TBD)
+- [Video] (https://www.youtube.com/watch?v=2kEYHM8xRcg)
 
 ## Homework
 
