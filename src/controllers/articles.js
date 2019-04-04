@@ -18,7 +18,7 @@ async function getById(ctx) {
 
 async function create(ctx) {
   validate(schemas.article, ctx.request.body)
-  ctx.body = await operations.create(ctx.request.body)
+  ctx.body = await operations.create(ctx.state.user.id, ctx.request.body)
 }
 
 module.exports = {

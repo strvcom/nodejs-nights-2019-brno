@@ -4,15 +4,15 @@ const articlesData = require('./articles.json')
 const articlesTagsData = require('./articles_tags.json')
 
 exports.seed = function(knex, Promise) {
-  return knex('tags').del()
+  return knex('articles_tags').del()
   .then(() => {
-    return knex('users').del();
-  })
-  .then(() => {
-    return knex('articles_tags').del();
+    return knex('tags').del();
   })
   .then(() => {
     return knex('articles').del();
+  })
+  .then(() => {
+    return knex('users').del();
   })
   .then(() => {
     return knex('tags').insert(tagsData);
