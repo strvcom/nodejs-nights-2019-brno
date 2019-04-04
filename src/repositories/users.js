@@ -27,10 +27,8 @@ async function findByEmail(email) {
   return user
 }
 
-function create(user) {
-  user.id = users.length + 1
-  users.push(user)
-  return user
+async function create(user) {
+  return User.query().insertAndFetch(user)
 }
 
 module.exports = {

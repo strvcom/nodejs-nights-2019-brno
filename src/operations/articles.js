@@ -11,10 +11,10 @@ function getById(input) {
   return articleRepository.findById(input.id)
 }
 
-async function create(input) {
+async function create(authorId, input) {
   await validateText(input.content)
 
-  return articleRepository.create(input)
+  return articleRepository.create(authorId, input)
 }
 
 module.exports = {

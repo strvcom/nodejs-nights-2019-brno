@@ -27,7 +27,7 @@ const article = {
     tags: {
       type: 'array',
       items: {
-        type: 'string',
+        type: 'object',
       },
     },
   },

@@ -17,8 +17,14 @@ async function findById(id) {
   return article
 }
 
-function create(article) {
-  return Article.query().insertGraphAndFetch(article).eager('tags')
+function create(authorId, article) {
+  return Article.query().upsertGraphAndFetch({
+    ...article,
+    author_id: authorId,
+  }, {
+    relate: true,
+    insertMissing: true
+  }).eager('tags')
 }
 
 module.exports = {
