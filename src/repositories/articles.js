@@ -1,25 +1,24 @@
 'use strict'
 
-const R = require('ramda')
 const errors = require('../utils/errors')
-const articles = require('./../database/articles.json')
+const Article = require('../database/models/article')
 
 function findAll() {
-  return articles
+  return Article.query().eager('tags')
 }
 
-function findById(id) {
-  const article = R.find(R.propEq('id', id), articles)
+async function findById(id) {
+  const article = await Article.query().where('id', id).eager('tags').first()
+
   if (!article) {
-    throw new errors.NotFoundError()
+    throw new errors.NotFoundError
   }
+
   return article
 }
 
 function create(article) {
-  article.id = articles.length + 1
-  articles.push(article)
-  return article
+  return Article.query().insertGraphAndFetch(article).eager('tags')
 }
 
 module.exports = {

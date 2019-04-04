@@ -7,6 +7,7 @@ const koaCors = require('kcors')
 const routes = require('./routes')
 const config = require('./config')
 const log = require('./utils/logger')
+const database = require('./database')
 
 const services = {
   server: null,
@@ -25,7 +26,7 @@ app.start = async () => {
   log.info('Starting app…')
 
   // Start any services here:
-  // e.g. database connection.
+  await database.start()
 
   services.server = await new Promise((resolve, reject) => {
     const listen = app.listen(config.server.port, err => err ? reject(err) : resolve(listen))
