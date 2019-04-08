@@ -6,7 +6,7 @@ function say(condition) {
     let name = 'John'
     name = 'Mark'
   }
-  
+
   console.log(name)
 }
 
