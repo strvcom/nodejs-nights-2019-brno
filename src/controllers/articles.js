@@ -17,7 +17,13 @@ async function getById(ctx) {
 }
 
 async function create(ctx) {
-  validate(schemas.article, ctx.request.body)
+  const article = {
+    title: ctx.request.body.title,
+    content: ctx.request.body.content,
+    image: ctx.request.body.image,
+    tags: ctx.request.body.tags,
+  }
+  validate(schemas.article, article)
   ctx.body = await operations.create(ctx.request.body)
 }
 

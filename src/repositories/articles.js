@@ -1,7 +1,6 @@
 'use strict'
 
 const R = require('ramda')
-const errors = require('../utils/errors')
 const articles = require('./../database/articles.json')
 
 function findAll() {
@@ -9,11 +8,7 @@ function findAll() {
 }
 
 function findById(id) {
-  const article = R.find(R.propEq('id', id), articles)
-  if (!article) {
-    throw new errors.NotFoundError()
-  }
-  return article
+  return R.find(R.propEq('id', id), articles)
 }
 
 function create(article) {
