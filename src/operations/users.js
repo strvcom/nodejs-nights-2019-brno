@@ -50,7 +50,6 @@ async function signUp(input) {
     name: input.name,
     email: input.email.toLowerCase(),
     password: await crypto.hashPassword(input.password),
-    disabled: false,
   }
   const alreadyExists = await userRepository.findByEmail(user.email)
   if (alreadyExists) {

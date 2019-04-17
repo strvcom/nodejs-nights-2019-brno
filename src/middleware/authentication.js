@@ -3,14 +3,11 @@
 const { validate } = require('../validations')
 const operations = require('../operations/users')
 const schemas = require('../validations/schemas/users')
+const errors = require('../utils/errors')
 
 async function authenticate(ctx, next) {
-  if (!ctx) {
-    throw new Error('Context is missing in authenticateToken function!')
-  }
-
   if (!ctx.header.authorization) {
-    return null
+    throw new errors.UnauthorizedError()
   }
 
   const input = { jwtToken: ctx.header.authorization }

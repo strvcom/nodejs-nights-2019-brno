@@ -1,5 +1,6 @@
 'use strict'
 
+const errors = require('../utils/errors')
 const articleRepository = require('./../repositories/articles')
 const { validateText } = require('./text-analysis')
 
@@ -8,7 +9,11 @@ function getAll() {
 }
 
 function getById(input) {
-  return articleRepository.findById(input.id)
+  const article = articleRepository.findById(input.id)
+  if (!article) {
+    throw new errors.NotFoundError()
+  }
+  return article
 }
 
 async function create(authorId, input) {
