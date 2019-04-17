@@ -2,7 +2,7 @@
 
 - [Topics covered](./topics.md)
 - [Presentation](https://docs.google.com/presentation/d/1C1bWK_-J_7KjjXM2SxbeIRa4Uzxn7QfIbS6u_y6EDos/edit?usp=sharing)
-- Video: TO BE DONE
+- [Video](https://www.youtube.com/watch?v=2kEYHM8xRcg)
 
 ## Homework
 
@@ -16,11 +16,12 @@ Get names of all vehicles owned by `Luke Skywalker`. Use Starwars API to retriev
 4. Use `map` function (<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map>) to retrieve vehicles names and dump them to the console
 
 ### Implementation details:
-1. Install Node.js latest from <https://nodejs.org/en/>
+1. Install Node.js latest or LTS from <https://nodejs.org/en/>
 2. Implement workflow with callbacks
   - use `request` package to make requests
   - package documentation is here: <https://www.npmjs.com/package/request>
   - to install the package use `npm install request` (`npm` is Node Package Manager automatically installed with Node.js)
+  - see inspiration [here](./12-homework.js)
 
 3. Implement workflow with promises
   - use `request-promise` package to make requests
@@ -28,3 +29,6 @@ Get names of all vehicles owned by `Luke Skywalker`. Use Starwars API to retriev
 
 4. Implement workflow with async await
   - `async await` works with promises so use the same `request-promise` package
+
+
+NOTE: If for some reason SWAPI is down, please let me know (it happened before, the API is beyond our control). 

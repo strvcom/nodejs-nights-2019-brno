@@ -71,26 +71,45 @@ function callApi(url) {
 
 async function run() {
 
-  const data = await callApi('api.google.com')
-  // Context is automatically loaded here
-  console.log(data)
-  const innerData = await callApi('api.microsoft.com')
-  console.log(innerData)
-  const subData = await callApi('api.apple.com')
-  console.log(`${data}, ${subData}`)
+  try {
 
-  // We can await all at once
-  /*
-  const [data, innerData, subData] = await Promise.all([
-    callApi('api.google.com'),
-    callApi('api.microsoft.com'),
-    callApi('api.apple.com')
-  })
+    const data = await callApi('api.google.com')
+    // Context is automatically loaded here
+    console.log(data)
+    const innerData = await callApi('api.microsoft.com')
+    console.log(innerData)
+    const subData = await callApi('api.apple.com')
+    console.log(`${data}, ${subData}`)
   
-  console.log(data)
-  console.log(innerData)
-  console.log(`${data}, ${subData}`)
-  */
+    // We can await all at once
+    /*
+    const [data, innerData, subData] = await Promise.all([
+      callApi('api.google.com'),
+      callApi('api.microsoft.com'),
+      callApi('api.apple.com')
+    })
+    
+    console.log(data)
+    console.log(innerData)
+    console.log(`${data}, ${subData}`)
+    */
+  
+    // We can use for await loop to start processing sooner
+    /*
+    const arrayOfPromises = [
+      callApi('api.google.com'),
+      callApi('api.aws.com'),
+      callApi('api.aws.com')
+    ]
+  
+    for await (const data of arrayOfPromises) {
+      console.log(data)
+    }
+    */
+
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 // Result of an async function is Promise 

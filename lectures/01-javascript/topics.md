@@ -61,8 +61,7 @@
   - Promises
   - `async await`
 
-  ### 9. Iterators & Symbols
-  ### 10. Generators
+  ### 9. Generators
 
 ## Resources
 - [Writable, enumerable, configurable](http://arqex.com/967/javascript-properties-enumerable-writable-configurable)

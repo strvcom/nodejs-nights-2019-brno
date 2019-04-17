@@ -1,12 +1,12 @@
 
-function test(condition) {
+function say(condition) {
   if (condition) {
     // var name = 'John'
     // const name = 'John'
     let name = 'John'
     name = 'Mark'
   }
-  
+
   console.log(name)
 }
 
@@ -18,4 +18,4 @@ const obj = {
 obj.first = 'Mark'  // This is OK
 obj = {}            // This is NOT OK
 
-test(true)
+say(true)

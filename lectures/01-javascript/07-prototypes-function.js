@@ -15,9 +15,9 @@ const KillerProto = {
 Killer.prototype = KillerProto
 
 const john = new Killer()
-console.log(Object.getPrototypeOf(john) === KillerProto)
-console.log(john.__proto__.__proto__ === Object.prototype)
 
+console.log(john.__proto__ === KillerProto)
+console.log(john.__proto__.__proto__ === Object.prototype)
 console.log(john.hasOwnProperty('kill'))
 
 // Null & undefined - there's a difference but we usually don't care that much

@@ -1,32 +1,35 @@
-'use strict'
+const fs = require('fs')
 
-function fn() {
-  console.log('1.', 'synchronous function')
+setTimeout(() => {
+  console.log('setTimeout 0')
+}, 0)
+//
+setTimeout(() => {
+  console.log('setTimeout 1000')
+}, 1000)
+
+function syncFn() {
+  console.log('fn()')
 }
 
-setTimeout(() => {
-  console.log('3.', 'setTimeout with 0ms')
-}, 0)
-
-setTimeout(() => {
-  console.log('5.', 'setTimeout with 2000ms/2s')
-}, 2000)
-
 setImmediate(() => {
-  console.log('4.', 'setImmediate')
+    console.log('setImmediate')
 })
 
 process.nextTick(() => {
-  console.log('2.', 'nextTick')
+  console.log('nextTick')
 })
 
-fn()
+syncFn()
 
-/**
-Result:
-1. synchronous function
-2. nextTick
-3. setTimeout with 0ms
-4. setImmediate
-5. setTimeout with 2000ms/2s
-*/
+fs.readFile(__filename, () => {
+  setTimeout(() => {
+    console.log('setTimeout')
+  }, 0)
+  setImmediate(() => {
+    console.log('setImmediate')
+  })
+  process.nextTick(() => {
+      console.log('nextTick')
+  })
+})

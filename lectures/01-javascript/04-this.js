@@ -6,6 +6,7 @@ const killer = {
     console.log(`I am ${this.name} and I will kill ${who} in ${where}.`)
   },
   count: function() {
+    // setInterval(function {
     setInterval(() => {
       console.log(this.counter++)
     }, 1000)
