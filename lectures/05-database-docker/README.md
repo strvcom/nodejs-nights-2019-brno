@@ -54,7 +54,7 @@ I would suggest for you to try to setup and work with [Sequelize](http://docs.se
 
 - PostgreSQL download: [https://www.postgresql.org/download/](https://www.postgresql.org/download/)
 - Docker download: [https://store.docker.com/search?type=edition&offering=community](https://store.docker.com/search?type=edition&offering=community)
-- PostgreSQL Docker image: [https://hub.docker.com/r/sameersbn/postgresql/](https://hub.docker.com/r/sameersbn/postgresql/)
+- PostgreSQL Docker image: [https://hub.docker.com/r/sameersbn/postgresql/](https://hub.docker.com/_/postgres/)
 - pgAdmin download: [https://www.pgadmin.org/download/](https://www.pgadmin.org/download/)
 - Objection.js documentation: [http://vincit.github.io/objection.js/](http://vincit.github.io/objection.js/)
 - Knex Migrations documentation: [https://knexjs.org/#Migrations](https://knexjs.org/#Migrations)
