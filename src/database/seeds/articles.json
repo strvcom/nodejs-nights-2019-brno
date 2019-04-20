@@ -3,20 +3,20 @@
     "id": 1,
     "title": "Hello!",
     "content": "It is our pleasure to welcome you at STRV nodejs nights.",
-    "tags": ["STRV", "nodejs nights 2019"]
+    "author_id": 1
   },
   {
     "id": 2,
     "title": "A guide to native ReasonML for NodeJS developers",
     "content": "These days, ReasonML, backed by OCaml, is hitting the hype train really hard, with people raving over type safety, performance and ...",
     "image": "https://strv.ghost.io/content/images/2019/01/reasonML-cover.png",
-    "tags": ["backend", "engineering"]
+    "author_id": 1
   },
   {
     "id": 3,
     "title": "Dash & STRV: Evolving the Crypto Ecosystem",
     "content": "Currently the 11th largest crypto in the world by market cap and pioneers of the first trustless Decentralized Governance on the blockchain.",
     "image": "https://strv.ghost.io/content/images/2018/10/Blog-Cover.jpg",
-    "tags": ["dash", "cryptocurrency"]
+    "author_id": 2
   }
 ]

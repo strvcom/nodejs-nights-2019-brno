@@ -24,7 +24,7 @@ async function create(ctx) {
     tags: ctx.request.body.tags,
   }
   validate(schemas.article, article)
-  ctx.body = await operations.create(ctx.request.body)
+  ctx.body = await operations.create(ctx.state.user.id, ctx.request.body)
 }
 
 module.exports = {

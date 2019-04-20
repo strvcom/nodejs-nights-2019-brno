@@ -29,6 +29,9 @@ module.exports = env => ({
       maxAge: 3600,
     },
   },
+  db: {
+    uri: process.env.DB_URI || 'postgresql://postgres@localhost:5432/nodejsnights'
+  },
   auth: {
     secret: process.env.AUTH_SECRET
       || 'nc475yb9cb*)&n4fy0bt9vwcfnhuwhbv8hf9docgaewu348y983fsdhfelhf',
