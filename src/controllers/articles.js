@@ -25,6 +25,7 @@ async function create(ctx) {
   }
   validate(schemas.article, article)
   ctx.body = await operations.create(ctx.state.user.id, ctx.request.body)
+  ctx.status = 201
 }
 
 module.exports = {
