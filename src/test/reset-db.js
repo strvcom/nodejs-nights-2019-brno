@@ -18,7 +18,15 @@ module.exports = {
       .map(tableName => `"${tableName}"`)
 
     if (tableNames && tableNames.length) {
-      await knex.raw(`TRUNCATE ${tableNames.join()} RESTART IDENTITY CASCADE`)
+      // RESTART IDENTITY
+      // -> Automatically restart sequences owned by columns of the truncated table(s).
+      // CASCADE
+      // -> Automatically truncate all tables that have foreign-key references to
+      //    any of the named tables, or to any tables added to the group due to CASCADE.
+      await knex.raw(`
+        TRUNCATE ${tableNames.join()} 
+        RESTART IDENTITY 
+        CASCADE`)
     }
   },
 }

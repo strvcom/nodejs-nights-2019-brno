@@ -14,7 +14,7 @@ const createUserData = () => ({
 
 const createUser = userData => {
   const defaultData = createUserData()
-  const mergedUserData = R.mergeDeepRight(userData, defaultData)
+  const mergedUserData = R.mergeDeepRight(defaultData, userData)
   return User.query().insertAndFetch(mergedUserData)
 }
 
