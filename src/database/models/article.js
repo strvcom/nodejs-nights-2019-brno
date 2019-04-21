@@ -1,8 +1,11 @@
+'use strict'
+/* eslint-disable global-require */
+
 const { Model } = require('objection')
 
 class Article extends Model {
   static get tableName() {
-    return 'articles';
+    return 'articles'
   }
 
   static get relationMappings() {
@@ -12,8 +15,8 @@ class Article extends Model {
         modelClass: require('./user'),
         join: {
           from: 'articles.author_id',
-          to: 'users.id'
-        }
+          to: 'users.id',
+        },
       },
       tags: {
         relation: Model.ManyToManyRelation,
@@ -22,12 +25,12 @@ class Article extends Model {
           from: 'articles.id',
           through: {
             from: 'articles_tags.article_id',
-            to: 'articles_tags.tag_id'
+            to: 'articles_tags.tag_id',
           },
-          to: 'tags.id'
-        }
-      }
-    };
+          to: 'tags.id',
+        },
+      },
+    }
   }
 }
 

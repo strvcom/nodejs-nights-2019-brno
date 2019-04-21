@@ -27,7 +27,7 @@ async function findByEmail(email) {
   return user
 }
 
-async function create(user) {
+function create(user) {
   return User.query().insertAndFetch(user)
 }
 
