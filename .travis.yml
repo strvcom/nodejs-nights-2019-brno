@@ -1,0 +1,54 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - '10.15'
+
+services:
+  - docker
+
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  - npm i -g npm@$(node -p "require('./package').engines.npm")
+
+install:
+  - npm install
+
+before_script:
+  # Disable built-in Postgres service since we are using Docker containers for everything
+  - sudo service postgresql stop
+  - docker-compose up -d
+  - docker ps
+
+script:
+  - npm run lint
+  - npm test
+
+after_success:
+  - npm run coverage
+  # - codecov
+
+env:
+  global:
+    - NODE_ENV=test
+    - DB_URI=postgres://postgres:testpasswd@127.0.0.1:5433/nodejsnights-db-tests
+
+before_deploy: rm -rf node_modules
+
+deploy:
+  # Deploy code to Heroku
+  - provider: heroku
+    skip_cleanup: true
+    api_key:
+
+    app:
+      master: nodejs-nights-2019-brno
+      06-testing-and-ci-cd-live: nodejs-nights-2019-brno
+    on:
+      branch:
+        - master
+        - 06-testing-and-ci-cd-live
+      repo: strvcom/nodejs-nights-2019-brno
