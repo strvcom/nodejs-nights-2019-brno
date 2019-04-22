@@ -2,53 +2,44 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - '10.15'
-
+- '10.15'
 services:
-  - docker
-
+- docker
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - npm i -g npm@$(node -p "require('./package').engines.npm")
-
+- npm i -g npm@$(node -p "require('./package').engines.npm")
 install:
-  - npm install
-
+- npm install
 before_script:
-  # Disable built-in Postgres service since we are using Docker containers for everything
-  - sudo service postgresql stop
-  - docker-compose up -d
-  - docker ps
-
+- sudo service postgresql stop
+- docker-compose up -d
+- docker ps
 script:
-  - npm run lint
-  - npm test
-
+- npm run lint
+- npm test
 after_success:
-  - npm run coverage
-  # - codecov
-
+- npm run coverage
 env:
   global:
-    - NODE_ENV=test
-    - DB_URI=postgres://postgres:testpasswd@127.0.0.1:5433/nodejsnights-db-tests
-
+  - NODE_ENV=test
+  - DB_URI=postgres://postgres:testpasswd@127.0.0.1:5433/nodejsnights-db-tests
 before_deploy: rm -rf node_modules
-
 deploy:
-  # Deploy code to Heroku
+  matrix:
   - provider: heroku
     skip_cleanup: true
-    api_key:
-
     app:
       master: nodejs-nights-2019-brno
       06-testing-and-ci-cd-live: nodejs-nights-2019-brno
+      06-testing-and-ci-cd: nodejs-nights-2019-brno
     on:
       branch:
-        - master
-        - 06-testing-and-ci-cd-live
+      - master
+      - 06-testing-and-ci-cd-live
+      - 06-testing-and-ci-cd
       repo: strvcom/nodejs-nights-2019-brno
+      
+  api_key:
+    secure: RYJBsebHuEieeUkABLP98ZtB07e33y6eUOJGqmlRQKmWQVLsOLRGxGx0pO/iZHvAgOftlB9GFWnURRxTScxLhQid0CHbUEqOE0k2Qk589mZ927kyfx+a6RZmTTzcMqO0KUpymDCaTBEJV15O8gPyE5a6RVAiPjnwV4co2Feop+gFtSvoUf4sP9S9AG8fVCpbuucRws7mOMFGNWA+hrXYv0X1ulZ9yZ8J3WGuTNMhzfqvp/ezt9sEjK26nfl8eWYC5ArsEi55wav0MDCo9B05BTOsCu0QllrqR5ylMp4OAB4+awy2rbyND/5nt9Lta6/WCkhA5M7Dlxk2H/GW9JJvK1ZCOSMBjpSVoldY/tSdFhSXfulA1kJkXjoO43f9RGfhSL2KouJpGsY7DWYnZo0DDtO7g7D40tvIBTAEvqzDrXkpQvqxoP8xMNLgh0Ia62G54drdKe1UVknqrtvA7sj/GpkhF38UzAiNvestRQDtAkkrh2BYSlWnd2LT2nQEwwMjT3kk0NRyFjQuPwmcAhd5eR5H2kxIk3/Xr3QTbb+H5WbPWy7P10q109xBZjf2tcL7sfg1xw6nXhgY9i+3cRL7oIM4L3mJHfqhjjZkjtd+kdR79GVSUhSnYes9/liW+2+ipmobq5wS583FYisy5+aDZqYuBLbZDq0nSLwEBGXEcU4=
