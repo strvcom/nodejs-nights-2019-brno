@@ -30,6 +30,7 @@ As you can see in this repository, we are already using [Objection.js](http://vi
 Also, don't forget to follow the Objection.js [installation](http://vincit.github.io/objection.js/#installation) steps to ensure that you have installed all your dependencies.
 
 Also if you want to use migrations and seeds CLI please create `knexfile.js`
+[knexfile docs](https://knexjs.org/#knexfile)
 
 ## 3. Create your tables & models
 
