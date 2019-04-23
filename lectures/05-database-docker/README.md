@@ -29,7 +29,7 @@ Add docker-compose.yaml into project root directory
 As you can see in this repository, we are already using [Objection.js](http://vincit.github.io/objection.js/) in this branch. You can use the `src/config/default.js` and `src/databases/index.js` here as an example to setup your connection.
 Also, don't forget to follow the Objection.js [installation](http://vincit.github.io/objection.js/#installation) steps to ensure that you have installed all your dependencies.
 
-Also if you want to use migrations and seeds CLI please create `knexfile.js`
+Also if you want to use migrations and seeds CLI please create `src/config/knexfile.js`
 [knexfile docs](https://knexjs.org/#knexfile)
 
 ## 3. Create your tables & models
