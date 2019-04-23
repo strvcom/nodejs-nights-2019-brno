@@ -17,7 +17,6 @@ The homework for this week will consist basically into setting a database & dock
 
 ## 1. Set a database for your project
 
-
 Install Docker from [this link](https://store.docker.com/search?type=edition&offering=community) and use a PostgreSQL image like [this one](https://hub.docker.com/_/postgres/).
 After setting up your system and creating the database (if needed), you can use this branch as a reference on how to create a connection to the database.
 
@@ -29,6 +28,8 @@ Add docker-compose.yaml into project root directory
 
 As you can see in this repository, we are already using [Objection.js](http://vincit.github.io/objection.js/) in this branch. You can use the `src/config/default.js` and `src/databases/index.js` here as an example to setup your connection.
 Also, don't forget to follow the Objection.js [installation](http://vincit.github.io/objection.js/#installation) steps to ensure that you have installed all your dependencies.
+
+Also if you want to use migrations and seeds CLI please create `knexfile.js`
 
 ## 3. Create your tables & models
 
