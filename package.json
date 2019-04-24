@@ -7,7 +7,7 @@
     "npm": "~6.4.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test mocha --config .mocharc.js",
     "start": "node src/app.js",
     "dev": "nodemon src/app.js | pino-pretty",
     "lint": "eslint ./src"
@@ -24,9 +24,13 @@
   "homepage": "https://github.com/strvcom/nodejs-nights-2019-brno#readme",
   "devDependencies": {
     "@strv/eslint-config-javascript": "^9.2.0",
+    "chai": "^4.2.0",
+    "chance": "^1.0.18",
     "eslint": "^5.15.1",
+    "mocha": "^6.1.4",
     "nodemon": "^1.18.10",
-    "pino-pretty": "^2.5.0"
+    "pino-pretty": "^2.5.0",
+    "supertest-koa-agent": "^0.3.2"
   },
   "dependencies": {
     "@google-cloud/language": "^2.0.1",

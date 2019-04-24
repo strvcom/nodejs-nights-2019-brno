@@ -1,10 +1,12 @@
+'use strict'
+
 const { Model } = require('objection')
 const Knex = require('knex')
 const config = require('../config/knexfile')
 
-const start = async () => {
-  const knex = Knex(config)
 
+const knex = Knex(config)
+const start = async () => {
   try {
     // We test if connection was successful
     await knex.raw("SELECT 'test connection';")
@@ -15,4 +17,7 @@ const start = async () => {
   }
 }
 
-module.exports.start = start
+module.exports = {
+  start,
+  knex,
+}

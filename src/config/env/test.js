@@ -6,4 +6,7 @@ module.exports = {
     stdout: true,
     minLevel: 'debug',
   },
+  db: {
+    uri: process.env.DB_URI || 'postgres://postgres:pgpassword@localhost:5433/nodejsnights-db-tests'
+  },
 }
