@@ -31,7 +31,6 @@ env:
   - DB_URI=postgres://postgres:testpasswd@127.0.0.1:5433/nodejsnights-db-tests
 before_deploy: rm -rf node_modules
 deploy:
-  matrix:
   - provider: heroku
     skip_cleanup: true
     app:
