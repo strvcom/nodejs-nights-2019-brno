@@ -26,13 +26,18 @@ Homework has 3 parts:
 3. Verify correct behavior of API (e.g. validation error).
 
 
-## 2. Write integration tests for users controllers to achieve ~ 95% test coverage for controllers/articles.js
+## 2. Write integration tests for users controllers to achieve ~ 95% test coverage for src/controllers/users.js
 
 1. Create new file `/tests/integration/users.test.js`.
 2. Write tests (similar to articles.test.js).
 
 
 ## 3. (OPTIONAL) Try to deploy your API to Heroku.
+1. Try setting up account with Heroku if you don't have one (https://www.heroku.com).
+2. Fork this repository (to make Travis work with your repo).
+3. Setup account with Travis if you don't have one.
+4. Allow Travis access to your forked repository.
+5. Modify .travis.yml (specifically secret api key and repo) and deploy your API to Hereoku.
 
 # Links
 
