@@ -3,8 +3,7 @@ dist: trusty
 language: node_js
 branches:
   only:
-    - master
-    - 06-testing-and-ci-cd
+  - master
 node_js:
 - '10.15'
 services:
@@ -20,6 +19,7 @@ before_script:
 - sudo service postgresql stop
 - docker-compose up -d
 - docker ps
+- node make-build-info.js
 script:
 - npm run lint
 - npm test
@@ -36,14 +36,9 @@ deploy:
     skip_cleanup: true
     app:
       master: nodejs-nights-2019-brno
-      06-testing-and-ci-cd-live: nodejs-nights-2019-brno
-      06-testing-and-ci-cd: nodejs-nights-2019-brno
     on:
       branch:
       - master
-      - 06-testing-and-ci-cd-live
-      - 06-testing-and-ci-cd
       repo: strvcom/nodejs-nights-2019-brno
-      
   api_key:
-    secure: RYJBsebHuEieeUkABLP98ZtB07e33y6eUOJGqmlRQKmWQVLsOLRGxGx0pO/iZHvAgOftlB9GFWnURRxTScxLhQid0CHbUEqOE0k2Qk589mZ927kyfx+a6RZmTTzcMqO0KUpymDCaTBEJV15O8gPyE5a6RVAiPjnwV4co2Feop+gFtSvoUf4sP9S9AG8fVCpbuucRws7mOMFGNWA+hrXYv0X1ulZ9yZ8J3WGuTNMhzfqvp/ezt9sEjK26nfl8eWYC5ArsEi55wav0MDCo9B05BTOsCu0QllrqR5ylMp4OAB4+awy2rbyND/5nt9Lta6/WCkhA5M7Dlxk2H/GW9JJvK1ZCOSMBjpSVoldY/tSdFhSXfulA1kJkXjoO43f9RGfhSL2KouJpGsY7DWYnZo0DDtO7g7D40tvIBTAEvqzDrXkpQvqxoP8xMNLgh0Ia62G54drdKe1UVknqrtvA7sj/GpkhF38UzAiNvestRQDtAkkrh2BYSlWnd2LT2nQEwwMjT3kk0NRyFjQuPwmcAhd5eR5H2kxIk3/Xr3QTbb+H5WbPWy7P10q109xBZjf2tcL7sfg1xw6nXhgY9i+3cRL7oIM4L3mJHfqhjjZkjtd+kdR79GVSUhSnYes9/liW+2+ipmobq5wS583FYisy5+aDZqYuBLbZDq0nSLwEBGXEcU4=
+    secure: bINzFYMc/FgKuvAro1SV3gnOwxLm5cmZPrlaG4HKNYVh40lVQs0mXGXE28WZnDhXkx1mc3WQIlsYeZ4/l5YEBm37GVH5ekU1ulEFwCoWkDAhTomzJt/R19SrFcGeSBsyWbzMrCLVfrfCwlPRdPam+pSYSSXjIVM6hMVCwi7Kvn8Jt9gdmRFm4BGkDuTf1rfOYbBxRmfmIGxdqrUYggcqO42TJw9sTDjWH3+QWPP2tXp07IpCoaLCca+4wqeStkPaGwsy1kJR42EN68854ti0doR+Xdfq+6vMoCAm/rqNzScqQeLciInYzMtlbjo79m5rfwD/2lbQE0ttZttalwWi3quhMn1QBEHvf1DLVq6v+wDR75NJJ2cLEawbSBhqs1HRpYCeTt2SKMbSGnLpZnUNhm+G8y0ecXvYfzSALVqNalVmoedZL0N6ibzMOOkn0UWqJ3HIpjiW1NzEgSmKXSX8NCYHlgxCleF9PquH1mBo53MCEs9VaqpDxhQpNx9evtoA4Mf8BOGx8MCUwfuozUYunvTMtxWy+DHnesfsZrMhwmdSM9xmL4VkP+U+NfupNYWGayNiE9SFD/UFN9yn1T3WGQVkN2n7jSyx3JuPZb6SWYoGuA4JOA9X5fJyxeDGPvnj/W1tuJNiRUNhCH2sj7w4KUNq4zIqfZ6wqE4TNmaHS3A=
