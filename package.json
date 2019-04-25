@@ -7,10 +7,12 @@
     "npm": "~6.4.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --config .mocharc.js",
     "start": "node src/app.js",
     "dev": "nodemon src/app.js | pino-pretty",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src", 
+    "migrate:latest": "knex migrate:latest --cwd ./src/database --knexfile ./../config/knexfile.js",
+    "coverage": "nyc mocha --config .mocharc.js"
   },
   "repository": {
     "type": "git",
@@ -24,9 +26,14 @@
   "homepage": "https://github.com/strvcom/nodejs-nights-2019-brno#readme",
   "devDependencies": {
     "@strv/eslint-config-javascript": "^9.2.0",
+    "chai": "^4.2.0",
+    "chance": "^1.0.18",
     "eslint": "^5.15.1",
+    "mocha": "^6.1.4",
     "nodemon": "^1.18.10",
-    "pino-pretty": "^2.5.0"
+    "nyc": "^14.0.0",
+    "pino-pretty": "^2.5.0",
+    "sinon": "^7.3.2"
   },
   "dependencies": {
     "@google-cloud/language": "^2.0.1",
@@ -43,6 +50,7 @@
     "objection": "^1.6.7",
     "pg": "^7.9.0",
     "pino": "^5.11.1",
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "supertest-koa-agent": "^0.3.2"
   }
 }

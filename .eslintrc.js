@@ -23,5 +23,12 @@ module.exports = {
     rules: {
       'func-names': 'off',
     },
+  },{
+    files: [
+      'src/database/models/*.js',
+    ],
+    rules: {
+      'global-require': 'off',
+    },
   }],
 }

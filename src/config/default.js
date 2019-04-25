@@ -30,7 +30,7 @@ module.exports = env => ({
     },
   },
   db: {
-    uri: process.env.DB_URI || 'postgresql://postgres@localhost:5432/nodejsnights'
+    uri: process.env.DB_URI || 'postgresql://postgres@localhost:5432/nodejsnights',
   },
   auth: {
     secret: process.env.AUTH_SECRET

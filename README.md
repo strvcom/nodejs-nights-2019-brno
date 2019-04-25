@@ -4,6 +4,7 @@
 Here you can find a list of past lessons:
 
 1. [Javascript](./lectures/01-javascript/README.md)
+5. [Testing and CI/CD](./lectures/06-testing-ci-cd/README.md)
 
 ## Lecture Recordings
 Here you can find a list of past lecture recordings:

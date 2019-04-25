@@ -7,7 +7,12 @@ const userRepository = require('./../repositories/users')
 
 async function verifyTokenPayload(input) {
   logger.info({ input }, 'verifyTokenPayload start')
-  const jwtPayload = await crypto.verifyAccessToken(input.jwtToken)
+  let jwtPayload
+  try {
+    jwtPayload = await crypto.verifyAccessToken(input.jwtToken)
+  } catch (err) {
+    throw new errors.UnauthorizedError()
+  }
   const now = Date.now()
   if (!jwtPayload || !jwtPayload.exp || now >= jwtPayload.exp * 1000) {
     throw new errors.UnauthorizedError()

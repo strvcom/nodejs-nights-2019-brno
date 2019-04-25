@@ -1,0 +1,44 @@
+sudo: required
+dist: trusty
+language: node_js
+branches:
+  only:
+  - master
+node_js:
+- '10.15'
+services:
+- docker
+cache:
+  directories:
+  - node_modules
+before_install:
+- npm i -g npm@$(node -p "require('./package').engines.npm")
+install:
+- npm install
+before_script:
+- sudo service postgresql stop
+- docker-compose up -d
+- docker ps
+- node make-build-info.js
+script:
+- npm run lint
+- npm test
+after_success:
+- npm run coverage
+env:
+  global:
+  - NODE_ENV=test
+  - DB_URI=postgres://postgres:testpasswd@127.0.0.1:5433/nodejsnights-db-tests
+before_deploy: rm -rf node_modules
+deploy:
+  matrix:
+  - provider: heroku
+    skip_cleanup: true
+    app:
+      master: nodejs-nights-2019-brno
+    on:
+      branch:
+      - master
+      repo: strvcom/nodejs-nights-2019-brno
+  api_key:
+    secure: bINzFYMc/FgKuvAro1SV3gnOwxLm5cmZPrlaG4HKNYVh40lVQs0mXGXE28WZnDhXkx1mc3WQIlsYeZ4/l5YEBm37GVH5ekU1ulEFwCoWkDAhTomzJt/R19SrFcGeSBsyWbzMrCLVfrfCwlPRdPam+pSYSSXjIVM6hMVCwi7Kvn8Jt9gdmRFm4BGkDuTf1rfOYbBxRmfmIGxdqrUYggcqO42TJw9sTDjWH3+QWPP2tXp07IpCoaLCca+4wqeStkPaGwsy1kJR42EN68854ti0doR+Xdfq+6vMoCAm/rqNzScqQeLciInYzMtlbjo79m5rfwD/2lbQE0ttZttalwWi3quhMn1QBEHvf1DLVq6v+wDR75NJJ2cLEawbSBhqs1HRpYCeTt2SKMbSGnLpZnUNhm+G8y0ecXvYfzSALVqNalVmoedZL0N6ibzMOOkn0UWqJ3HIpjiW1NzEgSmKXSX8NCYHlgxCleF9PquH1mBo53MCEs9VaqpDxhQpNx9evtoA4Mf8BOGx8MCUwfuozUYunvTMtxWy+DHnesfsZrMhwmdSM9xmL4VkP+U+NfupNYWGayNiE9SFD/UFN9yn1T3WGQVkN2n7jSyx3JuPZb6SWYoGuA4JOA9X5fJyxeDGPvnj/W1tuJNiRUNhCH2sj7w4KUNq4zIqfZ6wqE4TNmaHS3A=

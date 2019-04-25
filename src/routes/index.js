@@ -5,11 +5,14 @@ const { handleErrors, handleNotFound } = require('../middleware/errors')
 const { authenticate } = require('../middleware/authentication')
 const articles = require('../controllers/articles')
 const users = require('../controllers/users')
+const root = require('../controllers/root')
 
 const router = new Router()
 router.use(handleErrors)
 
 /* PUBLIC ROUTES */
+
+router.get('/', root.root)
 
 router.post('/session/user', users.login)
 router.post('/users', users.signUp)

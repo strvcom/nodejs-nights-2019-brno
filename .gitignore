@@ -21,3 +21,9 @@ nbproject
 .tern-*
 .languagebabel
 jsconfig.json
+
+# code coverage
+coverage
+
+# add test task definitions for vscode
+!!.vscode/launch,json

@@ -8,10 +8,11 @@ function findAll() {
 }
 
 async function findById(id) {
-  const article = await Article.query().where('id', id).eager('tags').first()
+  const article = await Article.query().where('id', id).eager('tags')
+    .first()
 
   if (!article) {
-    throw new errors.NotFoundError
+    throw new errors.NotFoundError()
   }
 
   return article
@@ -20,10 +21,11 @@ async function findById(id) {
 function create(authorId, article) {
   return Article.query().upsertGraphAndFetch({
     ...article,
+    // eslint-disable-next-line
     author_id: authorId,
   }, {
     relate: true,
-    insertMissing: true
+    insertMissing: true,
   }).eager('tags')
 }
 

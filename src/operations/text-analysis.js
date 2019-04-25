@@ -1,10 +1,8 @@
 'use strict'
 
-const language = require('@google-cloud/language')
 const config = require('../config')
 const errors = require('../utils/errors')
-
-const client = new language.LanguageServiceClient()
+const languageService = require('../services/language-service')
 
 async function validateText(text) {
   if (!config.naturalLanguageValidation) {
@@ -16,7 +14,7 @@ async function validateText(text) {
     type: 'PLAIN_TEXT',
   }
 
-  const results = await client
+  const results = await languageService
     .analyzeSentiment({ document })
 
   const sentiment = results[0].documentSentiment
